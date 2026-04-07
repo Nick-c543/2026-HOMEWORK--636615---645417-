@@ -10,7 +10,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  * 
  * @author docente di POO 
  * @see Attrezzo
- * @version base
+ * @version completa
 */
 
 public class Stanza {
