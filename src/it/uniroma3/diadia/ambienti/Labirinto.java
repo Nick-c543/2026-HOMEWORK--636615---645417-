@@ -3,7 +3,8 @@ package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
- * Questa classe modella il labirinto per la partita
+ * Classe Labirinto - Questa classe modella il labirinto per la partita
+ 
  * @author: Margherita Manzi e Niccolò Ilari
  * @see Stanza
  * @versione base 
