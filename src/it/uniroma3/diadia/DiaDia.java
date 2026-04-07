@@ -15,7 +15,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
  * @author  docente di POO 
  *         (da un'idea di Michael Kolling and David J. Barnes) 
  *          
- * @version base
+ * @version aggiornata
  */
 
 public class DiaDia {
