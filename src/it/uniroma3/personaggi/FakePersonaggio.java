@@ -1,6 +1,7 @@
 package it.uniroma3.personaggi;
 
-import it.uniroma3.diadia.Partita; 
+import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.attrezzi.Attrezzo; 
 
 public class FakePersonaggio extends AbstractPersonaggio{
 	
@@ -12,5 +13,9 @@ public class FakePersonaggio extends AbstractPersonaggio{
 	public String agisci(Partita partita) {
 		return "fatto"; 
 	}
-
+	
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		return ""; 
+	}
 }

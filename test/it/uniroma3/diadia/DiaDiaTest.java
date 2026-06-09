@@ -2,13 +2,18 @@ package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
+
+import it.uniroma3.diadia.ambienti.*;
+
 
 class DiaDiaTest {
 
 	@Test
 	void testPartitaConVittoriaImmediata() {
-		IOSimulator io = new IOSimulator(new String[] {"vai nord"});
+		IOSimulator io = new IOSimulator(Arrays.asList("vai nord"));
 		DiaDia gioco = new DiaDia(io); 
 		gioco.gioca(); 
 		
@@ -19,11 +24,11 @@ class DiaDiaTest {
 	@Test
 	void testPartitaConSconfittaFineCfu() {
 		IOSimulator io = new IOSimulator(
-				new String[]{"vai sud", "vai est", "vai est", "vai est", 
+				Arrays.asList("vai sud", "vai est", "vai est", "vai est", 
 						"vai sud", "vai est", "vai est", "vai est",
 						"vai sud", "vai est", "vai est", "vai est",
 						"vai sud", "vai est", "vai est", "vai est",
-						"vai sud", "vai est", "vai est", "vai est"});
+						"vai sud", "vai est", "vai est", "vai est"));
 		DiaDia gioco = new DiaDia(io); 
 		gioco.gioca();
 		
@@ -44,7 +49,7 @@ class DiaDiaTest {
 	
 	@Test
 	void testPartitaComandoNonValido() {
-		IOSimulator io = new IOSimulator(new String[]{"vada su", "fine"});
+		IOSimulator io = new IOSimulator(Arrays.asList("vada su", "fine"));
 		DiaDia gioco = new DiaDia(io); 
 		gioco.gioca();
 		assertEquals(io.getMessaggio(1), "Comando inesistente");
@@ -53,10 +58,33 @@ class DiaDiaTest {
 	
 	@Test
 	void testPartitaDirezioneNonValida() {
-		IOSimulator io = new IOSimulator(new String[] {"vai su", "fine"});
+		IOSimulator io = new IOSimulator(Arrays.asList("vai su", "fine"));
 		DiaDia gioco = new DiaDia(io); 
 		gioco.gioca();
 		assertEquals(io.getMessaggio(1),"Direzione inesistente. Usa nord, est, sud o ovest.");
+	}
+	
+	@Test
+	void testPartitaConPrendiEPosa() throws StanzaNotFoundException {
+		Labirinto lab = Labirinto.newBuilder()
+				.addStanzaIniziale("Ingresso")
+				.addAttrezzo("chiave", 1) 
+				.addStanzaVincente("Uscita")
+				.addAdiacenza("Ingresso", "Uscita", Direzione.NORD)
+				.getLabirinto();
+		
+		assertTrue(lab.getEntrata().hasAttrezzo("chiave")); 
+
+		IOSimulator io = new IOSimulator(Arrays.asList("prendi chiave", "guarda", "posa chiave", "guarda", "fine"));
+		
+		DiaDia gioco = new DiaDia(lab, io); 
+		gioco.gioca();
+		
+		String primoGuarda = io.getMessaggio(4);
+		String secondoGuarda = io.getMessaggio(6);
+
+		assertFalse(primoGuarda.toString().contains("Contenuto borsa (1kg/10kg): chiave (1kg)"));
+		assertTrue(secondoGuarda.toString().contains("Borsa vuota"));
 	}
 	
 

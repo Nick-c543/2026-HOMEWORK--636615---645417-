@@ -2,10 +2,12 @@ package it.uniroma3.diadia.comandi;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.IOConsole;
+import it.uniroma3.diadia.*;
 import it.uniroma3.diadia.IO;
 
 
@@ -16,7 +18,7 @@ class fabbricaDiComandiFisarmonicaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		io = new IOConsole();
+		io = new IOSimulator(new ArrayList<>());
 		comandi = new FabbricaDiComandiFisarmonica(io);
 	}
 	

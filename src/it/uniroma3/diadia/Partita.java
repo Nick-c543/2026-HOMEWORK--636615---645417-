@@ -21,18 +21,34 @@ public class Partita {
 	private Giocatore giocatore; 
 	
 	/**
-	 * Inizializza la partita impostando il labirinto,
+	 * Inizializza la partita impostando il labirinto di default,
 	 * la stanza corrente e il giocatore. 
 	 */
 	public Partita(){
 		
-		this.labirinto = new Labirinto();
+		this.labirinto = new Labirinto("labirinto-default.txt");
 		this.finita = false;
 		this.stanzaCorrente=labirinto.getEntrata(); 
 		this.giocatore = new Giocatore(); 
 		
 	}
 	
+	/**
+	 * Inizializza la partita impostando un labirinto passato come parametro
+	 * @param labirinto
+	 */
+	public Partita(Labirinto labirinto) {
+		this.labirinto = labirinto; 
+		this.finita = false;
+		this.stanzaCorrente=labirinto.getEntrata(); 
+		this.giocatore = new Giocatore(); 
+	}
+	
+	/**
+	 * Inizializza la partita impostando un labirinto in base al 
+	 * livello passato come parametro
+	 * @param livello
+	 */
 	public Partita(int livello) {
 		String nomeFileLivello = ""; 
 		
@@ -111,11 +127,19 @@ public class Partita {
 	 */
 	public Giocatore getGiocatore() { return this.giocatore; }
 	
+	
+	
 	/**
 	 * Restituisce il labirinto della partita corrente
 	 * @return Labirinto
 	 */
 	public Labirinto getLabirinto() { return this.labirinto; } 
+	
+	/**
+	 * Imposta il labirinto della partita a quello passato per parametro
+	 * @param labirinto
+	 */
+	public void setLabirinto(Labirinto labirinto) { this.labirinto = labirinto; }
 	
 	/**
 	 * Ci dice se il giocatore è vivo (se non ha ancora finito i CFU)

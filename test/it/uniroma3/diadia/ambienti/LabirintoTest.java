@@ -14,7 +14,7 @@ class LabirintoTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		this.labirinto = new Labirinto();
+		this.labirinto = new Labirinto("Labirinto-default.txt");
 		this.atrio = labirinto.getEntrata();
 		this.biblioteca = atrio.getStanzaAdiacente(NORD);
 	}

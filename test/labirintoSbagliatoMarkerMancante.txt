@@ -1,0 +1,4 @@
+Stanze: biblioteca, N10, N11
+Inizio: N10
+Attrezzi: martello 10 biblioteca, pinza 2 N10
+Uscite: biblioteca nord N10, biblioteca sud N11

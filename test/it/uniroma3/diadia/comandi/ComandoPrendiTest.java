@@ -1,12 +1,14 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
+import it.uniroma3.diadia.*;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 
 class ComandoPrendiTest {
 	
@@ -19,25 +21,13 @@ class ComandoPrendiTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		io = new IOConsole();
+		io = new IOSimulator(new ArrayList<>());
 		prendiNulla = new ComandoPrendi(); 
 		prendiOggetto = new ComandoPrendi(); 
 		prendiNulla.setIO(io);
 		prendiOggetto.setIO(io);
 		partita = new Partita();
 		atrio = partita.getLabirinto().getEntrata();
-	}
-
-	@Test
-	void testSetParametroNUllo() {
-		prendiNulla.setParametro(null);
-		assertNull(prendiNulla.getParametro());
-	}
-	
-	@Test
-	void testSetParametroOggetto() {
-		prendiOggetto.setParametro("lampada");
-		assertEquals(prendiOggetto.getParametro(), "lampada");
 	}
 	
 	@Test

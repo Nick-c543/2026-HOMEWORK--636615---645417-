@@ -1,16 +1,17 @@
 package it.uniroma3.diadia;
 
+import java.util.Scanner;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.StanzaNotFoundException;
-//import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiIntrospettiva;
 
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
- * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
+ * Per giocare crea un'istanza di questa classe e invoca il metodo gioca
  *
  * Questa e' la classe principale crea e istanzia tutte le altre
  *
@@ -39,13 +40,22 @@ public class DiaDia {
 	private Partita partita;
 	private IO io; 
 	/**
-	 * Costruttore per inizializzare una nuova partita 
+	 * Costruttore per inizializzare una nuova partita standard 
 	 * 
 	 * @param io
-	 * @throws StanzaNotFoundException 
 	 */
 	public DiaDia(IO io) {
 		this.partita = new Partita();
+		this.io = io;
+	}
+	
+	/**
+	 * Costruttore per iniziare una nuova partita con un labirinto specifico
+	 * @param labirinto
+	 * @param io
+	 */
+	public DiaDia(Labirinto labirinto, IO io) {
+		this.partita = new Partita(labirinto); 
 		this.io = io;
 	}
 
@@ -55,9 +65,6 @@ public class DiaDia {
 	public void gioca() {
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
 		String istruzione = ""; 
-		//do		
-			//istruzione = io.leggiRiga();
-		//while (!processaIstruzione(istruzione));
 		while(!this.partita.isFinita()) {
 			istruzione = io.leggiRiga(); 
 			if (istruzione == null) {
@@ -66,6 +73,8 @@ public class DiaDia {
 			processaIstruzione(istruzione); 
 		}
 	}
+	
+	public Partita getPartita() { return this.partita; }
   
 
 
@@ -77,7 +86,7 @@ public class DiaDia {
 	private boolean processaIstruzione(String istruzione) {
 		
 		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva(io);
+		FabbricaDiComandi factory = new FabbricaDiComandiIntrospettiva(io);
 		
 		comandoDaEseguire = factory.costruisciComando(istruzione); 
 		
@@ -91,11 +100,18 @@ public class DiaDia {
 
 	}   
 
-
-	public static void main(String[] argc) {
-		IO io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);
-		gioco.gioca();
+	/**
+	 * Metodo main
+	 * @param argc
+	 * @throws StanzaNotFoundException
+	 */
+	public static void main(String[] argc) throws StanzaNotFoundException {
+		try(Scanner scanner = new Scanner(System.in)){
+			IO io = new IOConsole(scanner);
+			
+			DiaDia gioco = new DiaDia(io);
+			gioco.gioca();
+		}
 	}
 
 	

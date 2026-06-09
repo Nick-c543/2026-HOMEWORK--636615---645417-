@@ -22,8 +22,7 @@ public abstract class AbstractComando implements Comando{
 	public void setIO(IO io) { this.io = io; }
 	
 	public IO getIO() { return this.io; }
-	
-	
+
 	public String getNome() { return this.nome; }
 	
 

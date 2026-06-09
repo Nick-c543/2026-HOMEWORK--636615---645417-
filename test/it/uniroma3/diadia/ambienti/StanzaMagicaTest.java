@@ -17,14 +17,13 @@ class StanzaMagicaTest {
 	void setUp() throws Exception {
 		cucina = new StanzaMagica("cucina");
 		soggiorno = new StanzaMagica("soggiorno", 0);
-		
 		pentola = new Attrezzo("pentola", 4); 
 	}
 
 	@Test
 	void testAddAttrezzoNull() {
 		cucina.addAttrezzo(null);
-		assertEquals(cucina.getAttrezzi().size(), 1);
+		assertEquals(cucina.getAttrezzi().size(), 0);
 	}
 	
 	@Test

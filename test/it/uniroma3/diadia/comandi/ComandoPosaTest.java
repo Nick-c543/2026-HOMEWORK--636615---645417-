@@ -2,14 +2,15 @@ package it.uniroma3.diadia.comandi;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.*;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.IOConsole;
 
 
 class ComandoPosaTest {
@@ -27,7 +28,7 @@ class ComandoPosaTest {
 		posaBandiera = new ComandoPosa(); 
 		posaBandiera.setParametro("bandiera");
 		
-		io = new IOConsole(); 
+		io = new IOSimulator(new ArrayList<>()); 
 		posaNulla.setIO(io); 
 		posaBandiera.setIO(io);
 		
@@ -36,17 +37,6 @@ class ComandoPosaTest {
 		bandiera = new Attrezzo("bandiera", 2);
 	}
 
-	@Test
-	void testSetParametroNullo() {
-		posaNulla.setParametro(null);
-		assertNull(posaNulla.getParametro());
-	}
-	
-	@Test
-	void testSetParametroValido() {
-		posaNulla.setParametro("bandiera");
-		assertEquals(posaNulla.getParametro(), "bandiera");
-	}
 	
 	@Test
 	void testEseguiAttrezzoNull() {
@@ -70,5 +60,6 @@ class ComandoPosaTest {
 		assertTrue(atrio.hasAttrezzo("bandiera"));
 		
 	}
+
 
 }

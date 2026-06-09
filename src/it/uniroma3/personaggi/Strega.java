@@ -6,11 +6,15 @@ import java.util.Iterator;
 
 import it.uniroma3.diadia.Partita; 
 import it.uniroma3.diadia.ambienti.*;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Strega extends AbstractPersonaggio{
 	
+	private Attrezzo regalo; 
+	
 	public Strega(String nome, String presentazione) {
 		super(nome, presentazione); 
+		this.regalo = null; 
 	}
 	
 	@Override
@@ -44,7 +48,20 @@ public class Strega extends AbstractPersonaggio{
 			return "Dato che non mi hai salutata, ti sposto nella stanza " + stanzaMinAttr;			
 			
 		}
-		
 	}
+	
+	@Override
+	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
+		this.regalo = attrezzo; 
+		
+		return "Grazie per il regalo, ora però è mio HIHIHIHI!"; 
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

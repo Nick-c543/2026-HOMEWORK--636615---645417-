@@ -18,7 +18,7 @@ public class ComandoInteragisci extends AbstractComando {
 	public void esegui(Partita partita) {
 		IO io = this.getIO(); 
 		AbstractPersonaggio personaggio; 
-		personaggio = partita.getStanzaCorrente().getPersonaggio(); //da implementare
+		personaggio = partita.getStanzaCorrente().getPersonaggio(); 
 		if(personaggio != null) {
 			this.messaggio = personaggio.agisci(partita);
 			io.mostraMessaggio(this.messaggio);

@@ -14,7 +14,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  */
 public class StanzaMagicaProtected extends StanzaProtected{
 	
-final static private int SOGLIA_MAGICA_DEFAULT = 3; 
+	final static private int SOGLIA_MAGICA_DEFAULT = 3; 
 	
 	private int contatoreAttrezziPosati; 
 	private int sogliaMagica; 
@@ -55,24 +55,18 @@ final static private int SOGLIA_MAGICA_DEFAULT = 3;
 	/** 
 	 * Se è stata superata la soglia magica, l'attrezzo aggiunto viene modificato
 	 * secondo la funzione definita sopra. Altrimenti, viene aggiunto nella 
-	 * sua versione standards
+	 * sua versione standard
 	 * 
 	 * @param attrezzo
 	 * @return true o false se riesce ad aggiungere l'attrezzo o meno
 	 */
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-	this.contatoreAttrezziPosati++;
-	if (this.contatoreAttrezziPosati > this.sogliaMagica)
-	attrezzo = this.modificaAttrezzo(attrezzo);
-	if (this.numeroAttrezzi<this.attrezzi.length) {
-	this.attrezzi[this.numeroAttrezzi] = attrezzo;
-	this.numeroAttrezzi++;
-	return true;
-
-	}
-	else return false;
-
+		if (attrezzo == null) return false; 
+		this.contatoreAttrezziPosati++; 
+		if (this.contatoreAttrezziPosati>this.sogliaMagica)
+			attrezzo = this.modificaAttrezzo(attrezzo); 
+		return super.addAttrezzo(attrezzo);
 	}
 	
 	

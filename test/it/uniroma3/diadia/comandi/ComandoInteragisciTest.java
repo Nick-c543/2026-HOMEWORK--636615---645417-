@@ -2,11 +2,14 @@ package it.uniroma3.diadia.comandi;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
+import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.personaggi.*;
 
@@ -22,7 +25,7 @@ class ComandoInteragisciTest {
 		partita = new Partita(); 
 		fido = new Cane("Fido", "Sono un cane fedele, ma attento a quando mordo!"); 
 		interagisci = new ComandoInteragisci(); 
-		io = new IOConsole();
+		io = new IOSimulator(new ArrayList<>());
 		interagisci.setIO(io);
 	}
 

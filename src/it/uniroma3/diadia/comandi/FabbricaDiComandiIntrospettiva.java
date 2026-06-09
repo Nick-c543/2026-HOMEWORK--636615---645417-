@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 import it.uniroma3.diadia.IO;
 
-public class FabbricaDiComandiRiflessiva implements FabbricaDiComandi{
+public class FabbricaDiComandiIntrospettiva implements FabbricaDiComandi{
 	
 	private IO io; 
 	
-	public FabbricaDiComandiRiflessiva(IO io) {
+	public FabbricaDiComandiIntrospettiva(IO io) {
 		this.io = io;
 	}
 	

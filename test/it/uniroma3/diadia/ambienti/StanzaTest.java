@@ -80,7 +80,7 @@ class StanzaTest {
 	@Test
 	void testGetAttrezziUnAttrezzo() {
 		stanza1.addAttrezzo(padella);
-			assertEquals(stanza1.getAttrezzi().get(0),padella);
+		assertEquals(padella, stanza1.getAttrezzo("padella"));
 		assertEquals(stanza1.getAttrezzi().size(), 1);
 	}
 	
@@ -88,8 +88,8 @@ class StanzaTest {
 	void testGetAttrezziDueAttrezzi() {
 		stanza1.addAttrezzo(padella);
 		stanza1.addAttrezzo(computer);
-		assertEquals(stanza1.getAttrezzi().get(0),padella);
-		assertEquals(stanza1.getAttrezzi().get(1),computer);
+		assertEquals(padella, stanza1.getAttrezzo("padella"));
+		assertEquals(computer, stanza1.getAttrezzo("computer"));
 		assertEquals(2, stanza1.getAttrezzi().size()) ;
 
 	}

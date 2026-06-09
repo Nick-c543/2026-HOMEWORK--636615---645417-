@@ -69,4 +69,11 @@ public class StanzaMagica extends Stanza{
 		return super.addAttrezzo(attrezzo);
 	}
 	
+	/**
+     * Metodo per identificare se la stanza è magica
+     */
+    public boolean isMagica() {
+        return true; 
+    }
+	
 }

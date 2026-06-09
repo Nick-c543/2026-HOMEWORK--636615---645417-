@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 
  * @author Margherita Manzi e Niccolò Ilari
  * @see IO
- * @version base
+ * @version aggiornata
  */
 
 public class IOConsole implements IO{
@@ -16,8 +16,8 @@ public class IOConsole implements IO{
 	/**
 	 * Inizializza la Console
 	 */
-	public IOConsole() {
-		this.scanner = new Scanner(System.in);
+	public IOConsole(Scanner scanner) {
+		this.scanner = scanner;
 	}
 	
 	

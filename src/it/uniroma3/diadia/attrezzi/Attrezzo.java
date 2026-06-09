@@ -1,5 +1,4 @@
-package it.uniroma3.diadia.attrezzi;
-
+package it.uniroma3.diadia.attrezzi; 
 import it.uniroma3.diadia.ambienti.Stanza;
 
 /**
@@ -42,6 +41,8 @@ public class Attrezzo {
 	public int getPeso() {
 		return this.peso;
 	}
+	
+	public void setPeso(int peso) { this.peso = peso; }
 
 	/**
 	 * Restituisce una rappresentazione stringa di questo attrezzo
@@ -49,6 +50,35 @@ public class Attrezzo {
 	 */
 	public String toString() {
 		return this.getNome()+" ("+this.getPeso()+"kg)";
+	}
+	
+	/**
+	 * Due Attrezzi sono uguali se lo sono i loro pesi e nomi
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		
+		if (o == null || this.getClass() != o.getClass()) 
+	        return false; 
+		
+		Attrezzo that = (Attrezzo)o; 
+		
+		return this.getPeso() == that.getPeso() && this.getNome().equals(that.getNome()) ;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.getNome().hashCode() + this.getPeso(); 
+	}
+	
+	public int comparePeso(Attrezzo a1, Attrezzo a2) {
+		return a1.getPeso() - a2.getPeso(); 
+	}
+	
+	public int compareNome(Attrezzo a1, Attrezzo a2) {
+		return a1.getNome().compareTo(a2.getNome());
 	}
 
 }

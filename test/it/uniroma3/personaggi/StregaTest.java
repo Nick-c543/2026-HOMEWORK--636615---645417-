@@ -30,7 +30,7 @@ class StregaTest {
 	void testAgisciNonHaSalutato() {
 		assertEquals(partita.getStanzaCorrente().getNome(), "Atrio");
 		strega.agisci(partita); 
-		assertEquals(partita.getStanzaCorrente().getNome(), "Aula N11");
+		assertEquals(partita.getStanzaCorrente().getNome(), "Laboratorio Campus");
 	}
 
 }
